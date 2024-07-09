@@ -1,14 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <title></title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.2.0/mocha.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.2.0/mocha.js" charset="utf-8"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/3.5.0/chai.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.12.3/cdn.min.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
 </head>
 
-<body>
-    
+<body style="background-color: beige;">
+    <h1 style="text-align: center;">Greet Widget</h1>
+    <div class="myMessage"></div>
+    <input type="text" class="theInputValue">
+    <button class="theMessageButton">Show message</button>
+    <button class="ClearMessageButton">Clear message</button>
+    </div>
+
+    <script src="greet.js"></script>
+
+    <h1>Transport Fee Widget</h1>
+    <input type="radio" id="morningShift" name="shift" value="morning"> Morning Shift (R20) <br>
+    <input type="radio" id="afternoonShift" name="shift" value="afternoon"> Afternoon Shift (R10) <br>
+    <input type="radio" id="nightShift" name="shift" value="nightshift"> Night Shift (Free) <br><br>
+    <button type="button" onclick="TransportFee()">Transport Fee</button>
+    <script src="transportfee.js"></script>
+
+    <h1>Phone Bill Calculator</h1>
+    <input type="text" id="phoneData" placeholder="Enter calls and SMS (e.g., call, sms, call)">
+    <button @click="calculateBill()">Calculate Bill</button>
+    <p id="BillDisplay"></p>
+    <script src="totalphonebill.js"></script>
+
+    <h1>Airtime Remaining Widget</h1>
+    <p>Projected Usage: <input type="text" id="projectedUsage" placeholder="Enter usage (e.g., call, data, sms)"></p>
+    <p>Available Airtime: <input type="number" step="0.01" id="availableAirtime"
+            placeholder="Enter available airtime (e.g., 100.50)"></p>
+    <button @click="calculateAirtime()">Calculate Remaining Airtime</button>
+    <p id="remainingAirtimeDisplay"></p>
+    <script src="enoughairtime.js"></script>
+
 </body>
+
+</html>
