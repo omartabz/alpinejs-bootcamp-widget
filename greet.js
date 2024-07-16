@@ -6,6 +6,9 @@ function greet(neighborsName, language) {
         'fr': 'Bonjour',
         'ru': 'Pivet',
     };
+    if (/\d/.test(neighborsName)) {
+        return ('Invalid Input')
+    }
     return `${greetings[language] || greetings['en']}, ${neighborsName}!`;
 }
 
@@ -16,11 +19,11 @@ function showGreeting() {
 }
 
 // Trans
-function transportFee(shift){
-    const fees= {
-        'morning':'R20',
-        'afternoon':'R10',
-      'night':'Free Transport Baby!',
+function transportFee(shift) {
+    const fees = {
+        'morning': 'R20',
+        'afternoon': 'R10',
+        'night': 'Free Transport Baby!',
     };
     document.getElementById('feeDisplay').innerText = 'Transport Fee: ' + fees[shift];
 }
@@ -41,40 +44,40 @@ function showTotalPhoneBill() {
 
 
 //Enough Airtime
-function enoughAirtime(pro_use,avai_item) {
-    
-  const use_items = pro_use.split(',');
-  var callCount = 1.88;
-  var dataCount = 12;
-  var smsCount = 0.75;
-  var total = 0;
-  
-  for(let i = 0; i < use_items.length; i++) {
+function enoughAirtime(pro_use, avai_item) {
+
+    const use_items = pro_use.split(',');
+    var callCount = 1.88;
+    var dataCount = 12;
+    var smsCount = 0.75;
+    var total = 0;
+
+    for (let i = 0; i < use_items.length; i++) {
         const cu_pro_use = use_items[i].trim();
-        if(cu_pro_use === 'data') {
+        if (cu_pro_use === 'data') {
             total += dataCount;
-        } else if(cu_pro_use === 'call') {
+        } else if (cu_pro_use === 'call') {
             total += callCount;
-        } else if(cu_pro_use === 'sms') {
+        } else if (cu_pro_use === 'sms') {
             total += smsCount;
         }
     }
-    
+
     const rem_airtime = avai_item - total;
-    const result = rem_airtime >= 0 ? 'R' + rem_airtime.toFixed(2):'R0.00';
-    
+    const result = rem_airtime >= 0 ? 'R' + rem_airtime.toFixed(2) : 'R0.00';
+
     return result;
 }
 
-  const calculateAirtime = () => {
+const calculateAirtime = () => {
     const projectedUsage = document.getElementById("projectedUsage").value;
     const availableAirtime = parseFloat(document.getElementById("availableAirtime").value);
-  
+
     if (!projectedUsage || isNaN(availableAirtime)) {
-      alert("Please enter both projected usage and available airtime.");
-      return;
+        alert("Please enter both projected usage and available airtime.");
+        return;
     }
-  
+
     const remainingAirtime = enoughAirtime(projectedUsage, availableAirtime);
     document.getElementById("remainingAirtimeDisplay").textContent = remainingAirtime;
-  };
+};
